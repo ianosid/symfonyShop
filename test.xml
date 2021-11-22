@@ -1,0 +1,11 @@
+<daniel>
+    <firstName>Daniel</firstName>
+    <lastName value="Ianosi" />
+</daniel>
+
+
+
+daniel:
+    firstName:Daniel
+    lastname:
+        value:Ianosi
