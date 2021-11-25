@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+{% block stylesheets %}
+    <bau></bau>
+{% endblock %}
+
+{% block body %}
+    {{ form(productForm) }}
+{#    {{ form_start(productForm) }}#}
+{#    <div class="row">#}
+{#        <div class="col-4">#}
+{#            {{ form_row(productForm.name) }}#}
+{#        </div>#}
+{#        <div class="col-4">#}
+{#            {{ form_row(productForm.price) }}#}
+{#        </div>#}
+{#        <div class="col-4">#}
+{#            {{ form_row(productForm.category) }}#}
+{#        </div>#}
+{#    </div>#}
+{#    {{ form_end(productForm) }}#}
+{% endblock %}

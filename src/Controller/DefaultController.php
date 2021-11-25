@@ -32,12 +32,5 @@ class DefaultController extends AbstractController
         return $this->render('default/test.html.twig',['name'=>$name]);
     }
 
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/category/{category}", name="category")
-     */
-    public function category(Category $category): Response
-    {
-        return $this->render('default/category.html.twig',['category'=>$category]);
-    }
+
 }
