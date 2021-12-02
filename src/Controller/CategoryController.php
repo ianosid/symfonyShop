@@ -16,7 +16,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class CategoryController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_ADMIN")
      * @Route("/view/{category}", name="category")
      */
     public function view(Category $category): Response

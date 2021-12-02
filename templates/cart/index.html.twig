@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <table class="table">
+        <tr>
+            <th>Nume</th>
+            <th>Pret unitar</th>
+            <th>Cantitate</th>
+            <th>Pret total</th>
+            <th></th>
+        </tr>
+        {% for cartItem in cart.cartItems %}
+            <tr>
+                <td>{{ cartItem.product.name }}</td>
+                <td>{{ cartItem.product.price }} RON</td>
+                <td>
+                    <form action="{{ url('cart_update',{'product':cartItem.product.id}) }}" method="post">
+                        <input type="number" min="1" max="100" name="quantity" value="{{ cartItem.quantity }}">
+                        <button class="btn btn-success" type="submit">Update</button>
+                    </form>
+                </td>
+                <td>
+                    {% if cartService.getPromoCartItemTotal(cartItem) != cartService.getCartItemTotal(cartItem) %}
+                        <strike>{{ cartService.getCartItemTotal(cartItem) }} RON</strike>
+                        <hr />
+                    {% endif %}
+                    {{ cartService.getPromoCartItemTotal(cartItem) }} RON
+                </td>
+                <td><a class="btn btn-danger" href="{{ url('cart_delete',{'product':cartItem.product.id}) }}">Delete</a> </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <strike>{{ cartService.getCartTotal() }} RON</strike>
+                <hr />
+                {{ cartService.getPromoCartTotal() }} RON
+            </th>
+            <th></th>
+        </tr>
+    </table>
+    <a class="btn btn-danger" href="{{ url('cart_empty') }}">Sterge cos</a>
+</div>
+{% endblock %}

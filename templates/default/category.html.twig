@@ -12,7 +12,10 @@
     This is the {{ category.name }} category list
     <ul>
         {% for product in category.getProducts() %}
-            <li>{{ product.name }}</li>
+            <li>
+                {{ product.name }}
+                <a class="btn btn-primary" href="{{ url('cart_add',{'product':product.id}) }}">Adauga in cos</a>
+            </li>
         {% endfor %}
     </ul>
 </div>
