@@ -38,14 +38,21 @@ class CartService
         return $this->cart;
     }
 
-    public function getCartCount()
+    public static function countCartProducts($cart)
     {
         $total = 0;
-        foreach ($this->cart->getCartItems() as $cartItem){
+        foreach ($cart->getCartItems() as $cartItem){
             $total+=$cartItem->getQuantity();
         }
 
+        throw new \Exception('Invoicing cart with no products ');
+
         return $total;
+    }
+
+    public function getCartCount()
+    {
+        return self::countCartProducts($this->cart);
     }
 
     public function getCartItemTotal(CartItem $cartItem)
