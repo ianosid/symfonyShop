@@ -73,6 +73,11 @@ class Product
      */
     private $cartItems;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Vendor::class, inversedBy="products")
+     */
+    private $vendor;
+
     public function __construct()
     {
         $this->productImages = new ArrayCollection();
@@ -194,6 +199,18 @@ class Product
                 $cartItem->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVendor(): ?Vendor
+    {
+        return $this->vendor;
+    }
+
+    public function setVendor(?Vendor $vendor): self
+    {
+        $this->vendor = $vendor;
 
         return $this;
     }
