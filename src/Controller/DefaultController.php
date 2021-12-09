@@ -16,13 +16,12 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(): Response
     {
-        return $this->render('default/index.html.twig',['categories'=>$categoryRepository->findAll()]);
+        return $this->render('default/index.html.twig');
     }
 
     /**
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @Route("/sayHello/{firstName}/{lastName}", name="test")
      */
     public function test($firstName, $lastName): Response

@@ -9,11 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <ul>
-        {% for category in categories %}
-            <li><a href="{{ url('category',{'category':category.id}) }}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
+
     {% if app.user %}
         <p>This paragh is hidden!!!!</p>
     {% endif %}

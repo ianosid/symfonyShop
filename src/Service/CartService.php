@@ -45,8 +45,6 @@ class CartService
             $total+=$cartItem->getQuantity();
         }
 
-        throw new \Exception('Invoicing cart with no products ');
-
         return $total;
     }
 
